@@ -1,6 +1,18 @@
 # ToDo Refactor Starter
 
 Proyecto inicial para **ToDo Refactor Lab**: refactorización, pruebas unitarias y Pair Programming.
+## Integrantes
+- Estudiante A: Martínez Flores Javier Alexander
+- Estudiante B: Hernández López Clara Paulina
+ 
+## Objetivo
+Transformar una ToDo App funcional (tareas como strings y DOM mezclado
+con datos) en software mantenible y comprobable: modelo de objetos,
+reglas de dominio en taskService.js, pruebas unitarias con Vitest y
+una interfaz que solo actúa como adaptador. Desarrollado en Pair
+Programming.
+ 
+
 
 ## Inicio
 
