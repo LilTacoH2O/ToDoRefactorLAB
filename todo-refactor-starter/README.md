@@ -100,6 +100,12 @@ Documenta al menos una iteración:
 - RED → GREEN: 5 failed → 12 passed.
 - Pregunta del caso: sin coincidencias, `filter()` devuelve `[]`, nunca `undefined`; por eso se puede usar `.length` o `.map()` sin riesgo.
 
+## Misión 6 · cambiarEstado con map() y spread
+
+- Función: `cambiarEstado(tareas, id)` usa `map()` para producir una colección nueva del mismo tamaño; con spread (`{ ...tarea, completada: !tarea.completada }`) copia la tarea y cambia solo `completada`.
+- No se busca y muta el objeto original: las tareas que no coinciden se devuelven tal cual.
+- Pruebas (5): cambia la tarea correcta; no altera las demás; id inexistente conserva el contenido; no muta el original; aplicarlo dos veces regresa al estado inicial.
+- RED → GREEN: 5 failed → 17 passed.
 
 ## Pair Programming
  
@@ -117,7 +123,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 03 agregarTarea | Clara | Javier | Mision 03 (GREEN): implementa agregarTarea sin mutar - Driver: Clara / Navigator: Javier |
 | 04 buscarTarea (find) | Javier | Clara | Mision 04 (GREEN): buscarTarea con find() - Driver: Javier / Navigator: Clara |
 | 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier | Mision 05 (GREEN): obtenerPendientes y obtenerTerminadas con filter() - Driver: Clara / Navigator: Javier |
-| 06 cambiarEstado (map + spread) | Javier | Clara |  |
+| 06 cambiarEstado (map + spread) | Javier | Clara | Mision 06 (GREEN): cambiarEstado con map() y spread sin mutar - Driver: Javier / Navigator: Clara |
 | 07 eliminarTarea | Clara | Javier |  |
 | 08 obtenerResumen | Javier | Clara |  |
 | 09 Integración con la interfaz | Clara | Javier |  |
