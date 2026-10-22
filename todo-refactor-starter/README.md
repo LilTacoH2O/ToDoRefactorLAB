@@ -86,6 +86,12 @@ Documenta al menos una iteración:
 - Pruebas (4): la nueva tarea queda al final; el resultado tiene un elemento más; no modifica el arreglo recibido; funciona con una colección vacía.
 - RED → GREEN: 4 failed (`Misión 3 pendiente`) → 5 passed.
 - Pregunta del caso: si `agregarTarea` hiciera `push` sobre el arreglo recibido, lo detecta la prueba "no modifica el arreglo recibido"; las otras dos pasarían igual.
+## Misión 4 · buscarTarea con find()
+
+- Función: `buscarTarea(tareas, id)` usa `find()` porque la intención es encontrar una sola tarea, no recorrerlas todas.
+- `find()` devuelve el primer elemento que cumple la condición o `undefined` si no existe.
+- Pruebas (2): id existente; id inexistente devuelve `undefined`.
+- RED → GREEN: 2 failed (`Misión 4 pendiente`) → 7 passed.
 
 
 ## Pair Programming
@@ -102,7 +108,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 01 Modelo de objetos | Clara | Javier | Mision 01: modelo de tareas como objetos con id, titulo y completada - Driver: Clara / Navigator: Javier  |
 | 02 crearTarea + 1.ª prueba | Javier | Clara | Mision 02: crearTarea (RED visto en evidencia-red, GREEN implementado) - Driver: Javier / Navigator: Clara |
 | 03 agregarTarea | Clara | Javier | Mision 03 (GREEN): implementa agregarTarea sin mutar - Driver: Clara / Navigator: Javier |
-| 04 buscarTarea (find) | Javier | Clara |  |
+| 04 buscarTarea (find) | Javier | Clara | Mision 04 (GREEN): buscarTarea con find() - Driver: Javier / Navigator: Clara |
 | 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier |  |
 | 06 cambiarEstado (map + spread) | Javier | Clara |  |
 | 07 eliminarTarea | Clara | Javier |  |
