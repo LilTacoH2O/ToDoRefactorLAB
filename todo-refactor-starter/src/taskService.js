@@ -40,11 +40,11 @@ export function cambiarEstado(tareas, id) {
 }
 
 
-// MISIÓN 7
+// MISIÓN 7: "conservar todas excepto..." es un filter
 export function eliminarTarea(tareas, id) {
-  // TODO: conservar todos excepto el id indicado.
-  throw new Error("Misión 7 pendiente: implementar eliminarTarea()");
+  return tareas.filter(tarea => tarea.id !== id);
 }
+
 
 // MISIÓN 8
 export function obtenerResumen(tareas) {

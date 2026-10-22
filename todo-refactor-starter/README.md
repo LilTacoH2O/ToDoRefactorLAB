@@ -107,6 +107,14 @@ Documenta al menos una iteración:
 - Pruebas (5): cambia la tarea correcta; no altera las demás; id inexistente conserva el contenido; no muta el original; aplicarlo dos veces regresa al estado inicial.
 - RED → GREEN: 5 failed → 17 passed.
 
+## Misión 7 · eliminarTarea con filter()
+
+- Antes de programar elegimos `filter()`: eliminar es "conservar todas excepto la del id". `map()` conserva el tamaño (no elimina) y `find()` solo devuelve un elemento.
+- Función: `eliminarTarea(tareas, id)` devuelve `tareas.filter(tarea => tarea.id !== id)`.
+- Pruebas (4), más allá del caso feliz: id existente (con `some()` comprobamos que ya no queda ninguna con ese id); id inexistente; colección vacía; no modifica el arreglo recibido.
+- RED → GREEN: 4 failed → 21 passed.
+
+
 ## Pair Programming
  
 Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien roles con frecuencia y no hagan commit hasta que ambos puedan explicar el código y la prueba.
@@ -124,7 +132,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 04 buscarTarea (find) | Javier | Clara | Mision 04 (GREEN): buscarTarea con find() - Driver: Javier / Navigator: Clara |
 | 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier | Mision 05 (GREEN): obtenerPendientes y obtenerTerminadas con filter() - Driver: Clara / Navigator: Javier |
 | 06 cambiarEstado (map + spread) | Javier | Clara | Mision 06 (GREEN): cambiarEstado con map() y spread sin mutar - Driver: Javier / Navigator: Clara |
-| 07 eliminarTarea | Clara | Javier |  |
+| 07 eliminarTarea | Clara | Javier | Mision 07 (GREEN): eliminarTarea con filter() - Driver: Clara / Navigator: Javier |
 | 08 obtenerResumen | Javier | Clara |  |
 | 09 Integración con la interfaz | Clara | Javier |  |
 | 10 Refactor final | Javier | Clara |  |
