@@ -65,9 +65,18 @@ describe("agregarTarea (Misión 3)", () => {
     expect(resultado).toEqual([{ id: 1, titulo: "Primera", completada: false }]);
   });
 });
+describe("buscarTarea (Misión 4)", () => {
+  it("encuentra una tarea con un id existente", () => {
+    const tarea = buscarTarea(crearTareasMixtas(), 2);
+    expect(tarea).toEqual({ id: 2, titulo: "Diseñar pruebas", completada: false });
+  });
+
+  it("devuelve undefined con un id inexistente", () => {
+    expect(buscarTarea(crearTareasMixtas(), 99)).toBeUndefined();
+  });
+});
 
 
-// MISIÓN 4: prueba id existente e inexistente para buscarTarea().
 // MISIÓN 5: prueba colección mixta, sin coincidencias y vacía.
 // MISIÓN 6: prueba cambio correcto, otra tarea intacta e id inexistente.
 // MISIÓN 7: prueba eliminar existente, inexistente y colección vacía.
@@ -75,7 +84,6 @@ describe("agregarTarea (Misión 3)", () => {
 
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
 
-void buscarTarea;
 void obtenerPendientes;
 void obtenerTerminadas;
 void cambiarEstado;
