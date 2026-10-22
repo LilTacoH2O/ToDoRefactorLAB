@@ -10,6 +10,15 @@ import {
   obtenerResumen
 } from "../src/taskService.js";
 
+function crearTareasMixtas() {
+  return [
+    { id: 1, titulo: "Revisar requisitos", completada: true },
+    { id: 2, titulo: "Diseñar pruebas", completada: false },
+    { id: 3, titulo: "Refactorizar código", completada: false }
+  ];
+}
+
+
 /*
  * TODO REFACTOR LAB · SUITE STARTER
  *
@@ -31,7 +40,33 @@ describe("crearTarea", () => {
   });
 });
 
-// MISIÓN 3: agrega al menos dos pruebas para agregarTarea().
+describe("agregarTarea (Misión 3)", () => {
+  it("devuelve la colección con la nueva tarea al final", () => {
+    const tareas = crearTareasMixtas();
+    const nueva = crearTarea(4, "Escribir README");
+    const resultado = agregarTarea(tareas, nueva);
+    expect(resultado[resultado.length - 1]).toEqual(nueva);
+  });
+
+  it("el resultado contiene un elemento más", () => {
+    const tareas = crearTareasMixtas();
+    const resultado = agregarTarea(tareas, crearTarea(4, "Escribir README"));
+    expect(resultado).toHaveLength(tareas.length + 1);
+  });
+
+  it("no modifica el arreglo recibido", () => {
+    const tareas = crearTareasMixtas();
+    agregarTarea(tareas, crearTarea(4, "Escribir README"));
+    expect(tareas).toHaveLength(3);
+  });
+
+  it("funciona con una colección vacía", () => {
+    const resultado = agregarTarea([], crearTarea(1, "Primera"));
+    expect(resultado).toEqual([{ id: 1, titulo: "Primera", completada: false }]);
+  });
+});
+
+
 // MISIÓN 4: prueba id existente e inexistente para buscarTarea().
 // MISIÓN 5: prueba colección mixta, sin coincidencias y vacía.
 // MISIÓN 6: prueba cambio correcto, otra tarea intacta e id inexistente.
