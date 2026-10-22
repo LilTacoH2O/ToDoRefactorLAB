@@ -80,6 +80,14 @@ Documenta al menos una iteración:
 - REFACTOR: sin cambios; no había mejora que pudiéramos justificar.
 - Resultado: la prueba pasó (`1 passed`).
 
+## Misión 3 · agregarTarea
+
+- Función: `agregarTarea(tareas, nuevaTarea)` devuelve `[...tareas, nuevaTarea]`: un arreglo nuevo, sin modificar el recibido ni tocar el DOM.
+- Pruebas (4): la nueva tarea queda al final; el resultado tiene un elemento más; no modifica el arreglo recibido; funciona con una colección vacía.
+- RED → GREEN: 4 failed (`Misión 3 pendiente`) → 5 passed.
+- Pregunta del caso: si `agregarTarea` hiciera `push` sobre el arreglo recibido, lo detecta la prueba "no modifica el arreglo recibido"; las otras dos pasarían igual.
+
+
 ## Pair Programming
  
 Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien roles con frecuencia y no hagan commit hasta que ambos puedan explicar el código y la prueba.
@@ -93,7 +101,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 00 Comprender el legacy | Javier | Clara | Mision 00: analisis del codigo legacy y respuestas en README - Driver: Javier / Navigator: Clara |
 | 01 Modelo de objetos | Clara | Javier | Mision 01: modelo de tareas como objetos con id, titulo y completada - Driver: Clara / Navigator: Javier  |
 | 02 crearTarea + 1.ª prueba | Javier | Clara | Mision 02: crearTarea (RED visto en evidencia-red, GREEN implementado) - Driver: Javier / Navigator: Clara |
-| 03 agregarTarea | Clara | Javier |  |
+| 03 agregarTarea | Clara | Javier | Mision 03 (GREEN): implementa agregarTarea sin mutar - Driver: Clara / Navigator: Javier |
 | 04 buscarTarea (find) | Javier | Clara |  |
 | 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier |  |
 | 06 cambiarEstado (map + spread) | Javier | Clara |  |
@@ -109,3 +117,4 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 ## Misión 1 · Modelo de objetos
 
 Cada tarea pasó de string a `{ id, titulo, completada }`. Pertenecen a la tarea las propiedades que describen la entidad (`id`, `titulo`, `completada`); pertenecen a la interfaz el `<li>`, la clase `done`, los botones y el filtro activo. Al cambiar el modelo hubo que tocar `mostrarTareas()`: ese acoplamiento es lo que se separa en la Misión 9.
+
