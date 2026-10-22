@@ -70,6 +70,15 @@ Documenta al menos una iteración:
 - **RED:** ¿qué prueba escribiste y por qué falló?
 - **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+## Registro de una prueba que inicialmente falló (RED)
+
+- Misión: 02, `crearTarea`.
+- Prueba: "crea una tarea pendiente con id y título".
+- Salida observada (`npm test`): `Error: Misión 2 pendiente: implementar crearTarea()` (1 failed). Evidencia: `evidencia-red.png`.
+- Por qué falló: la función era un stub que lanza un error; aún no cumplía el comportamiento.
+- GREEN: `return { id, titulo, completada: false };`.
+- REFACTOR: sin cambios; no había mejora que pudiéramos justificar.
+- Resultado: la prueba pasó (`1 passed`).
 
 ## Pair Programming
  
@@ -83,7 +92,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 |---|---|---|---|
 | 00 Comprender el legacy | Javier | Clara | Mision 00: analisis del codigo legacy y respuestas en README - Driver: Javier / Navigator: Clara |
 | 01 Modelo de objetos | Clara | Javier | Mision 01: modelo de tareas como objetos con id, titulo y completada - Driver: Clara / Navigator: Javier  |
-| 02 crearTarea + 1.ª prueba | Javier | Clara |  |
+| 02 crearTarea + 1.ª prueba | Javier | Clara | Mision 02: crearTarea (RED visto en evidencia-red, GREEN implementado) - Driver: Javier / Navigator: Clara |
 | 03 agregarTarea | Clara | Javier |  |
 | 04 buscarTarea (find) | Javier | Clara |  |
 | 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier |  |

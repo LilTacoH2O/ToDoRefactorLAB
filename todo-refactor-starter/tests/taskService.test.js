@@ -39,7 +39,7 @@ describe("crearTarea", () => {
 // MISIÓN 8: prueba obtenerResumen(), incluyendo colección vacía.
 
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
-void agregarTarea;
+
 void buscarTarea;
 void obtenerPendientes;
 void obtenerTerminadas;

@@ -6,10 +6,9 @@
  * cada cambio.
  */
 
-// MISIÓN 2
+// MISIÓN 2: una tarea nueva siempre nace pendiente
 export function crearTarea(id, titulo) {
-  // TODO: devolver { id, titulo, completada: false }
-  throw new Error("Misión 2 pendiente: implementar crearTarea()");
+  return { id, titulo, completada: false }; 
 }
 
 // MISIÓN 3
