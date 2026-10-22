@@ -76,15 +76,13 @@ Documenta al menos una iteración:
 Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien roles con frecuencia y no hagan commit hasta que ambos puedan explicar el código y la prueba.
 <<<<<<< HEAD
 
-## Misión 1 · Modelo de objetos
 
-Cada tarea pasó de string a `{ id, titulo, completada }`. Pertenecen a la tarea las propiedades que describen la entidad (`id`, `titulo`, `completada`); pertenecen a la interfaz el `<li>`, la clase `done`, los botones y el filtro activo. Al cambiar el modelo hubo que tocar `mostrarTareas()`: ese acoplamiento es lo que se separa en la Misión 9.
 =======
  
 | Misión | Driver | Navigator | Commit |
 |---|---|---|---|
 | 00 Comprender el legacy | Javier | Clara | Mision 00: analisis del codigo legacy y respuestas en README - Driver: Javier / Navigator: Clara |
-| 01 Modelo de objetos | Clara | Javier |  |
+| 01 Modelo de objetos | Clara | Javier | Mision 01: modelo de tareas como objetos con id, titulo y completada - Driver: Clara / Navigator: Javier  |
 | 02 crearTarea + 1.ª prueba | Javier | Clara |  |
 | 03 agregarTarea | Clara | Javier |  |
 | 04 buscarTarea (find) | Javier | Clara |  |
@@ -98,3 +96,7 @@ Cada tarea pasó de string a `{ id, titulo, completada }`. Pertenecen a la tarea
 
 
 >>>>>>> e352cea16512d9e9892caf0268a6d45d0e30dc64
+
+## Misión 1 · Modelo de objetos
+
+Cada tarea pasó de string a `{ id, titulo, completada }`. Pertenecen a la tarea las propiedades que describen la entidad (`id`, `titulo`, `completada`); pertenecen a la interfaz el `<li>`, la clase `done`, los botones y el filtro activo. Al cambiar el modelo hubo que tocar `mostrarTareas()`: ese acoplamiento es lo que se separa en la Misión 9.
