@@ -93,6 +93,13 @@ Documenta al menos una iteración:
 - Pruebas (2): id existente; id inexistente devuelve `undefined`.
 - RED → GREEN: 2 failed (`Misión 4 pendiente`) → 7 passed.
 
+## Misión 5 · obtenerPendientes y obtenerTerminadas con filter()
+
+- Funciones: `obtenerPendientes(tareas)` y `obtenerTerminadas(tareas)` usan `filter()`, que selecciona sin transformar y devuelve un arreglo nuevo.
+- Pruebas (5): pendientes en colección mixta; ninguna pendiente; colección vacía; terminadas en colección mixta; no modifica la colección original.
+- RED → GREEN: 5 failed → 12 passed.
+- Pregunta del caso: sin coincidencias, `filter()` devuelve `[]`, nunca `undefined`; por eso se puede usar `.length` o `.map()` sin riesgo.
+
 
 ## Pair Programming
  
@@ -109,7 +116,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 02 crearTarea + 1.ª prueba | Javier | Clara | Mision 02: crearTarea (RED visto en evidencia-red, GREEN implementado) - Driver: Javier / Navigator: Clara |
 | 03 agregarTarea | Clara | Javier | Mision 03 (GREEN): implementa agregarTarea sin mutar - Driver: Clara / Navigator: Javier |
 | 04 buscarTarea (find) | Javier | Clara | Mision 04 (GREEN): buscarTarea con find() - Driver: Javier / Navigator: Clara |
-| 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier |  |
+| 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier | Mision 05 (GREEN): obtenerPendientes y obtenerTerminadas con filter() - Driver: Clara / Navigator: Javier |
 | 06 cambiarEstado (map + spread) | Javier | Clara |  |
 | 07 eliminarTarea | Clara | Javier |  |
 | 08 obtenerResumen | Javier | Clara |  |
