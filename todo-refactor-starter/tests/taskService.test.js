@@ -105,13 +105,41 @@ describe("obtenerPendientes y obtenerTerminadas (Misión 5)", () => {
   });
 });
 
+describe("cambiarEstado (Misión 6)", () => {
+  it("cambia el estado de la tarea correcta", () => {
+    const resultado = cambiarEstado(crearTareasMixtas(), 2);
+    expect(buscarTarea(resultado, 2).completada).toBe(true);
+  });
 
-// MISIÓN 6: prueba cambio correcto, otra tarea intacta e id inexistente.
+  it("no altera las demás tareas", () => {
+    const original = crearTareasMixtas();
+    const resultado = cambiarEstado(original, 2);
+    expect(buscarTarea(resultado, 1)).toEqual(original[0]);
+    expect(buscarTarea(resultado, 3)).toEqual(original[2]);
+  });
+
+  it("con un id inexistente conserva el contenido", () => {
+    const original = crearTareasMixtas();
+    expect(cambiarEstado(original, 99)).toEqual(original);
+  });
+
+  it("no modifica el objeto original (no hay mutación)", () => {
+    const original = crearTareasMixtas();
+    cambiarEstado(original, 2);
+    expect(original[1].completada).toBe(false);
+  });
+
+  it("aplicarlo dos veces regresa al estado inicial", () => {
+    const original = crearTareasMixtas();
+    const resultado = cambiarEstado(cambiarEstado(original, 2), 2);
+    expect(resultado).toEqual(original);
+  });
+});
+
 // MISIÓN 7: prueba eliminar existente, inexistente y colección vacía.
 // MISIÓN 8: prueba obtenerResumen(), incluyendo colección vacía.
 
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
 
-void cambiarEstado;
 void eliminarTarea;
 void obtenerResumen;
