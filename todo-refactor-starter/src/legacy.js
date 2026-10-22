@@ -7,9 +7,9 @@
  */
 
 let tareas = [
-  "Revisar requisitos",
-  "Diseñar pruebas",
-  "Refactorizar código"
+  { id: 1, titulo: "Revisar requisitos", completada: false },
+  { id: 2, titulo: "Diseñar pruebas", completada: false },
+  { id: 3, titulo: "Refactorizar código", completada: false }
 ];
 
 function mostrarTareas() {
@@ -17,8 +17,7 @@ function mostrarTareas() {
   lista.innerHTML = "";
 
   for (let i = 0; i < tareas.length; i++) {
-    lista.innerHTML += `<li>${tareas[i]}</li>`;
+    lista.innerHTML += `<li>${tareas[i].titulo}</li>`;
   }
 }
 
-// mostrarTareas();
