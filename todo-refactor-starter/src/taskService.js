@@ -8,7 +8,7 @@
 
 // MISIÓN 2: una tarea nueva siempre nace pendiente
 export function crearTarea(id, titulo) {
-  return { id, titulo, completada: false }; 
+  return { id, titulo, completada: false };
 }
 
 // MISIÓN 3: devuelve un arreglo NUEVO, no modifica el recibido
@@ -39,12 +39,10 @@ export function cambiarEstado(tareas, id) {
   );
 }
 
-
 // MISIÓN 7: "conservar todas excepto..." es un filter
 export function eliminarTarea(tareas, id) {
   return tareas.filter(tarea => tarea.id !== id);
 }
-
 
 // MISIÓN 8
 // Solución A (elegida): compone funciones ya probadas
@@ -69,11 +67,14 @@ export function filtrarPorEstado(tareas, filtro) {
     default: return tareas; // "todas" o un valor desconocido
   }
 }
+
 // MISIÓN 10: la validación del título es una regla de dominio, no del DOM
 export function esTituloValido(titulo) {
   return typeof titulo === "string" && titulo.trim() !== "";
 }
 
-
-
-
+// MISIÓN 11 (opción C): porcentaje entero de tareas terminadas
+export function obtenerPorcentajeAvance(tareas) {
+  if (tareas.length === 0) return 0; // evita dividir entre cero (NaN)
+  return Math.round((obtenerTerminadas(tareas).length / tareas.length) * 100);
+}

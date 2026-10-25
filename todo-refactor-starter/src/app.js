@@ -1,5 +1,5 @@
 /*
- * MISIÓN 9-10 · ADAPTADOR DE INTERFAZ
+ * MISIÓN 9-11 · ADAPTADOR DE INTERFAZ
  * Flujo: evento -> función de dominio -> nuevo estado -> render() -> DOM
  * Aquí NO hay reglas de negocio: todas viven en taskService.js.
  */
@@ -10,6 +10,7 @@ import {
   eliminarTarea,
   filtrarPorEstado,
   obtenerResumen,
+  obtenerPorcentajeAvance,
   esTituloValido,
   generarId
 } from "./taskService.js";
@@ -28,6 +29,7 @@ const inputTitulo = document.querySelector("#task-input");
 const lista = document.querySelector("#task-list");
 const mensaje = document.querySelector("#message");
 const resumenTexto = document.querySelector("#summary");
+const avanceTexto = document.querySelector("#progress");
 const botonesFiltro = [...document.querySelectorAll("[data-filter]")];
 
 // 3. EVENTOS
@@ -79,6 +81,7 @@ function render() {
   const resumen = obtenerResumen(tareas);
   resumenTexto.textContent =
     `Total: ${resumen.total} · Pendientes: ${resumen.pendientes} · Terminadas: ${resumen.terminadas}`;
+  avanceTexto.textContent = `Avance: ${obtenerPorcentajeAvance(tareas)} %`;
 }
 
 function crearElementoTarea(tarea) {
