@@ -120,6 +120,16 @@ Documenta al menos una iteración:
 - RED → GREEN: 3 failed → 24 passed.
 - La comparación entre las dos soluciones está en "Decisiones de refactor", punto 4.
 
+## Misión 9 · Integración con la interfaz
+
+- Dos reglas nuevas que la interfaz necesitaba, con prueba antes de implementar:
+  - `generarId(tareas)`: 1 con colección vacía; máximo id + 1 aunque falten números intermedios.
+  - `filtrarPorEstado(tareas, filtro)`: "todas", "pendientes", "terminadas" y un filtro desconocido (devuelve todas).
+- RED → GREEN: 6 failed (`is not a function`) → 30 passed.
+- `app.js` quedó como adaptador: evento → función de `taskService.js` → nuevo estado → `render()` → DOM. Ya no contiene reglas de negocio.
+- Se probaron los cinco escenarios manuales con Live Server; los resultados están en "Pruebas de integración manual".
+
+
 ## Decisiones de refactor
 
 1. **De strings a objetos `{ id, titulo, completada }`.** Da identidad y estado a cada tarea y permite agregar propiedades sin arreglos paralelos.
@@ -147,7 +157,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 06 cambiarEstado (map + spread) | Javier | Clara | Mision 06 (GREEN): cambiarEstado con map() y spread sin mutar - Driver: Javier / Navigator: Clara |
 | 07 eliminarTarea | Clara | Javier | Mision 07 (GREEN): eliminarTarea con filter() - Driver: Clara / Navigator: Javier |
 | 08 obtenerResumen | Javier | Clara | Mision 08 (GREEN): obtenerResumen reutilizando funciones probadas - Driver: Javier / Navigator: Clara |
-| 09 Integración con la interfaz | Clara | Javier |  |
+| 09 Integración con la interfaz | Clara | Javier | Mision 09 (GREEN): integracion de taskService con app.js y render() - Driver: Clara / Navigator: Javier |
 | 10 Refactor final | Javier | Clara |  |
 | 11 Extensión: porcentaje de avance | Clara | Javier |  |
 

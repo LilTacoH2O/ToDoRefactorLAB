@@ -56,3 +56,20 @@ export function obtenerResumen(tareas) {
   };
 }
 
+// MISIÓN 9: reglas que la interfaz necesita
+export function generarId(tareas) {
+  if (tareas.length === 0) return 1;
+  return Math.max(...tareas.map(tarea => tarea.id)) + 1;
+}
+
+export function filtrarPorEstado(tareas, filtro) {
+  switch (filtro) {
+    case "pendientes": return obtenerPendientes(tareas);
+    case "terminadas": return obtenerTerminadas(tareas);
+    default: return tareas; // "todas" o un valor desconocido
+  }
+}
+
+
+
+
