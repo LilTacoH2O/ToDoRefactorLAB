@@ -113,6 +113,19 @@ Documenta al menos una iteración:
 - Función: `eliminarTarea(tareas, id)` devuelve `tareas.filter(tarea => tarea.id !== id)`.
 - Pruebas (4), más allá del caso feliz: id existente (con `some()` comprobamos que ya no queda ninguna con ese id); id inexistente; colección vacía; no modifica el arreglo recibido.
 - RED → GREEN: 4 failed → 21 passed.
+## Misión 8 · obtenerResumen
+
+- Función: `obtenerResumen(tareas)` devuelve `{ total, pendientes, terminadas }` reutilizando `obtenerPendientes` y `obtenerTerminadas`.
+- Pruebas (3): colección mixta; colección vacía (todo en cero); pendientes + terminadas siempre es igual al total.
+- RED → GREEN: 3 failed → 24 passed.
+- La comparación entre las dos soluciones está en "Decisiones de refactor", punto 4.
+
+## Decisiones de refactor
+
+1. **De strings a objetos `{ id, titulo, completada }`.** Da identidad y estado a cada tarea y permite agregar propiedades sin arreglos paralelos.
+2. **Funciones que reciben datos y devuelven datos.** `agregarTarea`, `cambiarEstado` y `eliminarTarea` devuelven un arreglo nuevo en vez de modificar el recibido; así las pruebas son deterministas y no hay efectos secundarios. Hay una prueba de "no muta" en cada una.
+3. **Método de arreglo según la intención.** `find()` para encontrar uno; `filter()` para seleccionar varios (pendientes, terminadas) y para eliminar ("conservar todas excepto una"); `map()` para transformar conservando el tamaño (`cambiarEstado`). En `eliminarTarea` descartamos `map()` porque no reduce el tamaño y `find()` porque solo devuelve un elemento. `some()` lo usamos en la prueba de `eliminarTarea` para comprobar que ya no queda ninguna tarea con ese id (devuelve true/false).
+4. **`obtenerResumen` reutiliza `obtenerPendientes` y `obtenerTerminadas`.** Compara con calcular directo con un solo recorrido (`pendientes = total - terminadas`): elegimos la composición porque comunica mejor la intención y deja la regla de "completada" en un solo lugar, a cambio de recorrer el arreglo dos veces (irrelevante con pocas tareas).
 
 
 ## Pair Programming
@@ -133,7 +146,7 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 05 obtenerPendientes / obtenerTerminadas (filter) | Clara | Javier | Mision 05 (GREEN): obtenerPendientes y obtenerTerminadas con filter() - Driver: Clara / Navigator: Javier |
 | 06 cambiarEstado (map + spread) | Javier | Clara | Mision 06 (GREEN): cambiarEstado con map() y spread sin mutar - Driver: Javier / Navigator: Clara |
 | 07 eliminarTarea | Clara | Javier | Mision 07 (GREEN): eliminarTarea con filter() - Driver: Clara / Navigator: Javier |
-| 08 obtenerResumen | Javier | Clara |  |
+| 08 obtenerResumen | Javier | Clara | Mision 08 (GREEN): obtenerResumen reutilizando funciones probadas - Driver: Javier / Navigator: Clara |
 | 09 Integración con la interfaz | Clara | Javier |  |
 | 10 Refactor final | Javier | Clara |  |
 | 11 Extensión: porcentaje de avance | Clara | Javier |  |
