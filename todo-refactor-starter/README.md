@@ -216,3 +216,5 @@ La extensión del porcentaje de avance confirmó el diseño: solo agregamos una 
 ## Reflexión individual
 Javier:
 Lo que más me costó entender fue por qué cambiarEstado no debía modificar la tarea original si el resultado en pantalla se veía igual; lo entendí cuando la prueba de “no muta” falló en un intento con asignación directa. Como Navigator en la Misión 9 vi que app.js todavía tenía reglas escondidas en los eventos, algo que como Driver en otras misiones no notaba por estar enfocado en teclear. En la siguiente práctica escribiría los casos frontera antes que el caso feliz.
+Clara:
+Lo que más me costó fue distinguir cuándo usar map() y cuándo filter(), sobre todo en eliminarTarea, hasta que lo pensé como “transformar todas” contra “conservar algunas”. Como Navigator en generarId propuse el caso de ids con huecos, y me di cuenta de que desde afuera es más fácil imaginar cómo se puede romper una función. La próxima vez haría commits más pequeños para no acumular cambios y evitar conflictos como el del README.
