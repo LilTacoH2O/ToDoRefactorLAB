@@ -10,7 +10,8 @@ import {
   obtenerResumen,
   generarId,
   filtrarPorEstado,
-  esTituloValido
+  esTituloValido,
+  obtenerPorcentajeAvance
 } from "../src/taskService.js";
 
 function crearTareasMixtas() {
@@ -225,5 +226,24 @@ describe("esTituloValido (Misión 10)", () => {
     expect(esTituloValido("")).toBe(false);
     expect(esTituloValido("   ")).toBe(false);
     expect(esTituloValido(undefined)).toBe(false);
+  });
+});
+
+describe("obtenerPorcentajeAvance (Misión 11 · opción C)", () => {
+  it("devuelve 0 con una colección vacía (sin dividir entre cero)", () => {
+    expect(obtenerPorcentajeAvance([])).toBe(0);
+  });
+
+  it("devuelve 0 si ninguna está terminada", () => {
+    expect(obtenerPorcentajeAvance([crearTarea(1, "A")])).toBe(0);
+  });
+
+  it("redondea al entero más cercano (1 de 3 = 33)", () => {
+    expect(obtenerPorcentajeAvance(crearTareasMixtas())).toBe(33);
+  });
+
+  it("devuelve 100 si todas están terminadas", () => {
+    const todas = crearTareasMixtas().map(t => ({ ...t, completada: true }));
+    expect(obtenerPorcentajeAvance(todas)).toBe(100);
   });
 });
