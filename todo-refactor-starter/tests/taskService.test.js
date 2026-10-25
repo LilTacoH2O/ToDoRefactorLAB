@@ -160,8 +160,24 @@ describe("eliminarTarea (Misión 7)", () => {
   });
 });
 
-// MISIÓN 8: prueba obtenerResumen(), incluyendo colección vacía.
+describe("obtenerResumen (Misión 8)", () => {
+  it("cuenta total, pendientes y terminadas", () => {
+    expect(obtenerResumen(crearTareasMixtas())).toEqual({
+      total: 3,
+      pendientes: 2,
+      terminadas: 1
+    });
+  });
+
+  it("devuelve ceros con una colección vacía", () => {
+    expect(obtenerResumen([])).toEqual({ total: 0, pendientes: 0, terminadas: 0 });
+  });
+
+  it("pendientes + terminadas siempre es igual al total", () => {
+    const r = obtenerResumen(crearTareasMixtas());
+    expect(r.pendientes + r.terminadas).toBe(r.total);
+  });
+});
 
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
 
-void obtenerResumen;
