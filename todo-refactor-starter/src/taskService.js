@@ -69,6 +69,10 @@ export function filtrarPorEstado(tareas, filtro) {
     default: return tareas; // "todas" o un valor desconocido
   }
 }
+// MISIÓN 10: la validación del título es una regla de dominio, no del DOM
+export function esTituloValido(titulo) {
+  return typeof titulo === "string" && titulo.trim() !== "";
+}
 
 
 
