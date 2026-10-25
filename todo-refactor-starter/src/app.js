@@ -1,6 +1,7 @@
 /*
- * MISIÓN 9 · ADAPTADOR DE INTERFAZ
+ * MISIÓN 9-10 · ADAPTADOR DE INTERFAZ
  * Flujo: evento -> función de dominio -> nuevo estado -> render() -> DOM
+ * Aquí NO hay reglas de negocio: todas viven en taskService.js.
  */
 import {
   crearTarea,
@@ -9,81 +10,104 @@ import {
   eliminarTarea,
   filtrarPorEstado,
   obtenerResumen,
+  esTituloValido,
   generarId
 } from "./taskService.js";
 
-// ESTADO
+// 1. ESTADO
 let tareas = [
   { id: 1, titulo: "Revisar requisitos", completada: false },
   { id: 2, titulo: "Diseñar pruebas", completada: false },
   { id: 3, titulo: "Refactorizar código", completada: false }
 ];
-let filtro = "todas";
+let filtroActual = "todas";
 
-// REFERENCIAS AL DOM
-const form = document.querySelector("#task-form");
-const input = document.querySelector("#task-input");
-const list = document.querySelector("#task-list");
-const message = document.querySelector("#message");
-const summary = document.querySelector("#summary");
-const filters = [...document.querySelectorAll("[data-filter]")];
+// 2. REFERENCIAS AL DOM
+const formulario = document.querySelector("#task-form");
+const inputTitulo = document.querySelector("#task-input");
+const lista = document.querySelector("#task-list");
+const mensaje = document.querySelector("#message");
+const resumenTexto = document.querySelector("#summary");
+const botonesFiltro = [...document.querySelectorAll("[data-filter]")];
 
-// EVENTOS
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const titulo = input.value.trim();
-  if (titulo === "") {
-    message.textContent = "Escribe un título antes de agregar.";
+// 3. EVENTOS
+formulario.addEventListener("submit", manejarAlta);
+lista.addEventListener("click", manejarClicEnLista);
+botonesFiltro.forEach(boton =>
+  boton.addEventListener("click", () => manejarFiltro(boton))
+);
+
+function manejarAlta(evento) {
+  evento.preventDefault();
+  const titulo = inputTitulo.value.trim();
+
+  if (!esTituloValido(titulo)) {
+    mensaje.textContent = "Escribe un título antes de agregar.";
     return;
   }
-  tareas = agregarTarea(tareas, crearTarea(generarId(tareas), titulo));
-  input.value = "";
-  message.textContent = "";
-  render();
-});
 
-list.addEventListener("click", (event) => {
-  const boton = event.target.closest("button[data-accion]");
+  tareas = agregarTarea(tareas, crearTarea(generarId(tareas), titulo));
+  inputTitulo.value = "";
+  mensaje.textContent = "";
+  render();
+}
+
+function manejarClicEnLista(evento) {
+  const boton = evento.target.closest("button[data-accion]");
   if (!boton) return;
+
   const id = Number(boton.dataset.id);
   if (boton.dataset.accion === "cambiar") tareas = cambiarEstado(tareas, id);
   if (boton.dataset.accion === "eliminar") tareas = eliminarTarea(tareas, id);
   render();
-});
+}
 
-filters.forEach(button => button.addEventListener("click", () => {
-  filtro = button.dataset.filter;
-  filters.forEach(b => b.classList.toggle("active", b === button));
-  message.textContent = "";
+function manejarFiltro(botonSeleccionado) {
+  filtroActual = botonSeleccionado.dataset.filter;
+  botonesFiltro.forEach(boton =>
+    boton.classList.toggle("active", boton === botonSeleccionado)
+  );
+  mensaje.textContent = "";
   render();
-}));
+}
 
-// RENDER
+// 4. RENDER (solo dibuja)
 function render() {
-  const v = filtrarPorEstado(tareas, filtro);
-  list.innerHTML = "";
-  v.forEach(t => {
-    const li = document.createElement("li");
-    li.className = t.completada ? "task done" : "task";
-    const span = document.createElement("span");
-    span.className = "title";
-    span.textContent = t.titulo;
-    const acciones = document.createElement("span");
-    acciones.className = "task-actions";
-    const b1 = document.createElement("button");
-    b1.textContent = t.completada ? "Reabrir" : "Completar";
-    b1.dataset.accion = "cambiar";
-    b1.dataset.id = t.id;
-    const b2 = document.createElement("button");
-    b2.textContent = "Eliminar";
-    b2.dataset.accion = "eliminar";
-    b2.dataset.id = t.id;
-    acciones.append(b1, b2);
-    li.append(span, acciones);
-    list.appendChild(li);
-  });
-  const r = obtenerResumen(tareas);
-  summary.textContent = `Total: ${r.total} · Pendientes: ${r.pendientes} · Terminadas: ${r.terminadas}`;
+  const visibles = filtrarPorEstado(tareas, filtroActual);
+  lista.replaceChildren(...visibles.map(crearElementoTarea));
+
+  const resumen = obtenerResumen(tareas);
+  resumenTexto.textContent =
+    `Total: ${resumen.total} · Pendientes: ${resumen.pendientes} · Terminadas: ${resumen.terminadas}`;
+}
+
+function crearElementoTarea(tarea) {
+  const item = document.createElement("li");
+  item.className = "task";
+  item.classList.toggle("done", tarea.completada);
+
+  const texto = document.createElement("span");
+  texto.className = "title";
+  texto.textContent = tarea.titulo; // textContent evita inyectar HTML
+
+  const acciones = document.createElement("span");
+  acciones.className = "task-actions";
+  acciones.append(
+    crearBoton(tarea.completada ? "Reabrir" : "Completar", "cambiar", tarea.id),
+    crearBoton("Eliminar", "eliminar", tarea.id)
+  );
+
+  item.append(texto, acciones);
+  return item;
+}
+
+function crearBoton(texto, accion, id) {
+  const boton = document.createElement("button");
+  boton.type = "button";
+  boton.textContent = texto;
+  boton.dataset.accion = accion;
+  boton.dataset.id = id;
+  return boton;
 }
 
 render();
