@@ -179,5 +179,39 @@ describe("obtenerResumen (Misión 8)", () => {
   });
 });
 
+
+
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
 
+describe("generarId (Misión 9)", () => {
+  it("devuelve 1 cuando no hay tareas", () => {
+    expect(generarId([])).toBe(1);
+  });
+
+  it("devuelve el máximo id + 1, aunque falten números intermedios", () => {
+    const tareas = [crearTarea(1, "A"), crearTarea(5, "B")];
+    expect(generarId(tareas)).toBe(6);
+  });
+});
+
+describe("filtrarPorEstado (Misión 9)", () => {
+  it("'todas' devuelve todas las tareas", () => {
+    expect(filtrarPorEstado(crearTareasMixtas(), "todas")).toHaveLength(3);
+  });
+
+  it("'pendientes' devuelve solo las pendientes", () => {
+    const resultado = filtrarPorEstado(crearTareasMixtas(), "pendientes");
+    expect(resultado.every(t => !t.completada)).toBe(true);
+    expect(resultado).toHaveLength(2);
+  });
+
+  it("'terminadas' devuelve solo las terminadas", () => {
+    const resultado = filtrarPorEstado(crearTareasMixtas(), "terminadas");
+    expect(resultado.every(t => t.completada)).toBe(true);
+    expect(resultado).toHaveLength(1);
+  });
+
+  it("un filtro desconocido devuelve todas", () => {
+    expect(filtrarPorEstado(crearTareasMixtas(), "xyz")).toHaveLength(3);
+  });
+});
