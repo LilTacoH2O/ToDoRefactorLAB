@@ -136,7 +136,19 @@ Documenta al menos una iteración:
 2. **Funciones que reciben datos y devuelven datos.** `agregarTarea`, `cambiarEstado` y `eliminarTarea` devuelven un arreglo nuevo en vez de modificar el recibido; así las pruebas son deterministas y no hay efectos secundarios. Hay una prueba de "no muta" en cada una.
 3. **Método de arreglo según la intención.** `find()` para encontrar uno; `filter()` para seleccionar varios (pendientes, terminadas) y para eliminar ("conservar todas excepto una"); `map()` para transformar conservando el tamaño (`cambiarEstado`). En `eliminarTarea` descartamos `map()` porque no reduce el tamaño y `find()` porque solo devuelve un elemento. `some()` lo usamos en la prueba de `eliminarTarea` para comprobar que ya no queda ninguna tarea con ese id (devuelve true/false).
 4. **`obtenerResumen` reutiliza `obtenerPendientes` y `obtenerTerminadas`.** Compara con calcular directo con un solo recorrido (`pendientes = total - terminadas`): elegimos la composición porque comunica mejor la intención y deja la regla de "completada" en un solo lugar, a cambio de recorrer el arreglo dos veces (irrelevante con pocas tareas).
+## Misión 10 · Refactor final protegido por pruebas
 
+- Regla nueva con prueba: `esTituloValido(titulo)` (texto válido; vacío, solo espacios y no texto). RED → GREEN: 2 failed → 32 passed.
+- Refactor de `app.js` sin cambiar comportamiento (detalle en "Decisiones de refactor", puntos 5 y 6).
+- Después de cada cambio pequeño ejecutamos `npm test` (verde) y repetimos los cinco escenarios manuales: no hubo regresiones.
+
+## Misión 11 · Extensión elegida: Opción C · Porcentaje de avance
+
+- Función: `obtenerPorcentajeAvance(tareas)` devuelve el porcentaje entero de tareas terminadas.
+- Pregunta del caso (colección vacía): devuelve 0, porque `0 / 0` daría `NaN`. Redondea al entero más cercano (1 de 3 = 33).
+- Pruebas (4): colección vacía; ninguna terminada; redondeo 1 de 3 = 33; todas terminadas = 100. RED → GREEN: 4 failed → 36 passed.
+- Interfaz: solo tres líneas (un `<p id="progress">`, una referencia y una línea en `render()`).
+- ¿El refactor facilitó el cambio? Sí: una función pura, sus pruebas y tres líneas de interfaz, sin tocar el resto del código. Eso indica que el refactor redujo el acoplamiento.
 
 ## Pair Programming
  
@@ -158,8 +170,8 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 | 07 eliminarTarea | Clara | Javier | Mision 07 (GREEN): eliminarTarea con filter() - Driver: Clara / Navigator: Javier |
 | 08 obtenerResumen | Javier | Clara | Mision 08 (GREEN): obtenerResumen reutilizando funciones probadas - Driver: Javier / Navigator: Clara |
 | 09 Integración con la interfaz | Clara | Javier | Mision 09 (GREEN): integracion de taskService con app.js y render() - Driver: Clara / Navigator: Javier |
-| 10 Refactor final | Javier | Clara |  |
-| 11 Extensión: porcentaje de avance | Clara | Javier |  |
+| 10 Refactor final | Javier | Clara | Mision 10 (GREEN): esTituloValido en dominio y refactor de app.js protegido por pruebas - Driver: Javier / Navigator: Clara |
+| 11 Extensión: porcentaje de avance | Clara | Javier | Mision 11 (GREEN): extension porcentaje de avance en dominio y UI - Driver: Clara / Navigator: Javier |
 
 
 >>>>>>> e352cea16512d9e9892caf0268a6d45d0e30dc64
@@ -167,4 +179,3 @@ Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien 
 ## Misión 1 · Modelo de objetos
 
 Cada tarea pasó de string a `{ id, titulo, completada }`. Pertenecen a la tarea las propiedades que describen la entidad (`id`, `titulo`, `completada`); pertenecen a la interfaz el `<li>`, la clase `done`, los botones y el filtro activo. Al cambiar el modelo hubo que tocar `mostrarTareas()`: ese acoplamiento es lo que se separa en la Misión 9.
-
