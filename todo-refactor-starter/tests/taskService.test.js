@@ -7,7 +7,9 @@ import {
   obtenerTerminadas,
   cambiarEstado,
   eliminarTarea,
-  obtenerResumen
+  obtenerResumen,
+  generarId,
+  filtrarPorEstado
 } from "../src/taskService.js";
 
 function crearTareasMixtas() {
@@ -178,8 +180,6 @@ describe("obtenerResumen (Misión 8)", () => {
     expect(r.pendientes + r.terminadas).toBe(r.total);
   });
 });
-
-
 
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
 
