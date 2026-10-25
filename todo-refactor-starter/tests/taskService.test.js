@@ -9,7 +9,8 @@ import {
   eliminarTarea,
   obtenerResumen,
   generarId,
-  filtrarPorEstado
+  filtrarPorEstado,
+  esTituloValido
 } from "../src/taskService.js";
 
 function crearTareasMixtas() {
@@ -213,5 +214,16 @@ describe("filtrarPorEstado (Misión 9)", () => {
 
   it("un filtro desconocido devuelve todas", () => {
     expect(filtrarPorEstado(crearTareasMixtas(), "xyz")).toHaveLength(3);
+  });
+});
+describe("esTituloValido (Misión 10)", () => {
+  it("acepta un texto con contenido", () => {
+    expect(esTituloValido("Estudiar Vitest")).toBe(true);
+  });
+
+  it("rechaza texto vacío, solo espacios y valores no texto", () => {
+    expect(esTituloValido("")).toBe(false);
+    expect(esTituloValido("   ")).toBe(false);
+    expect(esTituloValido(undefined)).toBe(false);
   });
 });
