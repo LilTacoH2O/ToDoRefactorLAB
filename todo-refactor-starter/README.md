@@ -199,7 +199,47 @@ Registramos por misión quién fue **Driver** y quién **Navigator**. Intercambi
 
 ## Historial de commits
 
-[pegar aquí la salida de `git log --format="%h | %an | %ad | %s" --date=short`]
+```
+3804189 | Javier Alexander Martinez Flores | 2026-10-25 | Reflexiones individuales
+42dab55 | LilTacoH2O | 2026-10-25 | Add files via upload
+97d01b0 | Javier Alexander Martinez Flores | 2026-10-25 | Cierre: README completo con casos de prueba, pruebas manuales y reflexiones - Driver: Clara / Navigator: Javier
+dfe3d34 | pauli050 | 2026-10-25 | Mision 11 (GREEN): extension porcentaje de avance en dominio y UI - Driver: Clara / Navigator: Javier
+ebc673e | pauli050 | 2026-10-25 | Mision 11 (GREEN): extension porcentaje de avance en dominio y UI - Driver: Clara / Navigator: Javier
+808618d | Javier Alexander Martinez Flores | 2026-10-25 | Mision 10 (GREEN): esTituloValido en dominio y refactor de app.js protegido por pruebas - Driver: Javier / Navigator: Clara
+f02817a | pauli050 | 2026-10-25 | Mision 11 (RED): pruebas de obtenerPorcentajeAvance - Driver: Clara / Navigator: Javier
+b4cdcfa | Javier Alexander Martinez Flores | 2026-10-25 | Mision 10 (GREEN): esTituloValido en dominio y refactor de app.js protegido por pruebas - Driver: Javier / Navigator: Clara
+1d71c86 | Javier Alexander Martinez Flores | 2026-10-25 | Mision 10 (RED): pruebas de esTituloValido - Driver: Javier / Navigator: Clara
+556325e | pauli050 | 2026-10-25 | Mision 09 (GREEN): integracion de taskService con app.js y render() - Driver: Clara / Navigator: Javier
+9086f8e | pauli050 | 2026-10-25 | Mision 09 (RED): pruebas de generarId y filtrarPorEstado - Driver: Clara / Navigator: Javier
+4cb53c2 | pauli050 | 2026-10-25 | Mision 09 (RED): pruebas de generarId y filtrarPorEstado - Driver: Clara / Navigator: Javier
+170bed7 | Javier Alexander Martinez Flores | 2026-10-25 | Mision 08 (README): decisiones de refactor 1 a 4 y comparacion de soluciones - Driver: Javier / Navigator: Clara
+6bd73d6 | Javier Alexander Martinez Flores | 2026-10-25 | Mision 08 (GREEN): obtenerResumen reutilizando funciones probadas - Driver: Javier / Navigator: Clara
+d2a454b | Javier Alexander Martinez Flores | 2026-10-25 | Mision 08 (RED): pruebas de obtenerResumen - Driver: Javier / Navigator: Clara
+daab0a5 | pauli050 | 2026-10-22 | Mision 07 (GREEN): eliminarTarea con filter() - Driver: Clara / Navigator: Javier
+1b5b6a1 | pauli050 | 2026-10-22 | Mision 07 (RED): pruebas de eliminarTarea con casos frontera - Driver: Clara / Navigator: Javier
+bf001bc | Javier Alexander Martinez Flores | 2026-10-21 | Mision 06 (GREEN): cambiarEstado con map() y spread sin mutar - Driver: Javier / Navigator: Clara
+48dfd21 | Javier Alexander Martinez Flores | 2026-10-21 | Mision 06 (RED): pruebas de cambiarEstado - Driver: Javier / Navigator: Clara
+117c44e | pauli050 | 2026-10-21 | Mision 05 (GREEN): obtenerPendientes y obtenerTerminadas con filter() - Driver: Clara / Navigator: Javier
+391fdb0 | pauli050 | 2026-10-21 | Mision 05 (RED): pruebas de obtenerPendientes y obtenerTerminadas - Driver: Clara / Navigator: Javier
+8882c06 | Javier Alexander Martinez Flores | 2026-10-21 | Mision 04 (GREEN): buscarTarea con find() - Driver: Javier / Navigator: Clara
+7e6b52d | Javier Alexander Martinez Flores | 2026-10-21 | Mision 04 (GREEN): buscarTarea con find() - Driver: Javier / Navigator: Clara
+19f63a5 | Javier Alexander Martinez Flores | 2026-10-21 | Mision 04 (RED): pruebas de buscarTarea - Driver: Javier / Navigator: Clara
+035e2be | pauli050 | 2026-10-21 | Mision 03 (GREEN): implementa agregarTarea sin mutar - Driver: Clara / Navigator: Javier
+6202333 | pauli050 | 2026-10-21 | Mision 03 (GREEN): implementa agregarTarea sin mutar - Driver: Clara / Navigator: Javier
+fd33a84 | pauli050 | 2026-10-21 | Mision 03 (RED): pruebas de agregarTarea - Driver: Clara / Navigator: Javier
+737edaf | Javier Alexander Martinez Flores | 2026-10-21 | Mision 02: crearTarea (RED visto en evidencia-red, GREEN implementado) - Driver: Javier / Navigator: Clara
+12e8b83 | pauli050 | 2026-10-21 | Mision 01: modelo de tareas como objetos con id, titulo y completada - Driver: Clara / Navigator: Javier
+1e5566e | pauli050 | 2026-10-21 | Merge: integra Mision 00 y 01 y quita node_modules del repositorio
+6d76b2a | pauli050 | 2026-10-21 | Mision 01: modelo de tareas como objetos con id, titulo y completada - Driver: Clara / Navigator: Javier
+e352cea | Javier Alexander Martinez Flores | 2026-10-21 | Agregar package-lock.json
+5fc089e | Javier Alexander Martinez Flores | 2026-10-21 | Resolver conflictos de merge
+d9b2e63 | Javier Alexander Martinez Flores | 2026-10-20 | Mision 00: analisis del codigo legacy y respuestas en README - Driver: Javier / Navigator: Clara
+05545c8 | LilTacoH2O | 2026-10-20 | Update README with task management insights
+0a48bb3 | LilTacoH2O | 2026-10-20 | Update README with team members and project goals
+ae5a037 | Javier Alexander Martinez Flores | 2026-10-20 | Mi primer Commit
+```
+
+Cuentas: `pauli050` = Clara · `Javier Alexander Martinez Flores` y `LilTacoH2O` = Javier (commits locales y desde la web de GitHub).
 
 ## Pregunta de ingeniería (Pair Programming)
 
@@ -214,7 +254,7 @@ La prueba que más confianza nos dio fue la de `cambiarEstado` que comprueba que
 La extensión del porcentaje de avance confirmó el diseño: solo agregamos una función pura, sus pruebas y tres líneas de interfaz, sin tocar el resto del código. Alternar los roles de Driver y Navigator nos ayudó a detectar casos que quien tecleaba no veía, como el id inexistente.
 
 ## Reflexión individual
-Javier:
-Lo que más me costó entender fue por qué cambiarEstado no debía modificar la tarea original si el resultado en pantalla se veía igual; lo entendí cuando la prueba de “no muta” falló en un intento con asignación directa. Como Navigator en la Misión 9 vi que app.js todavía tenía reglas escondidas en los eventos, algo que como Driver en otras misiones no notaba por estar enfocado en teclear. En la siguiente práctica escribiría los casos frontera antes que el caso feliz.
-Clara:
-Lo que más me costó fue distinguir cuándo usar map() y cuándo filter(), sobre todo en eliminarTarea, hasta que lo pensé como “transformar todas” contra “conservar algunas”. Como Navigator en generarId propuse el caso de ids con huecos, y me di cuenta de que desde afuera es más fácil imaginar cómo se puede romper una función. La próxima vez haría commits más pequeños para no acumular cambios y evitar conflictos como el del README.
+
+- **Javier:** Lo que más me costó entender fue por qué `cambiarEstado` no debía modificar la tarea original si el resultado en pantalla se veía igual; lo entendí cuando la prueba de "no muta" falló en un intento con asignación directa. Como Navigator en la Misión 9 vi que `app.js` todavía tenía reglas escondidas en los eventos, algo que como Driver en otras misiones no notaba por estar enfocado en teclear. En la siguiente práctica escribiría los casos frontera antes que el caso feliz.
+
+- **Clara:** Lo que más me costó fue distinguir cuándo usar `map()` y cuándo `filter()`, sobre todo en `eliminarTarea`, hasta que lo pensé como "transformar todas" contra "conservar algunas". Como Navigator en `generarId` propuse el caso de ids con huecos, y me di cuenta de que desde afuera es más fácil imaginar cómo se puede romper una función. La próxima vez haría commits más pequeños para no acumular cambios y evitar conflictos como el del README.
