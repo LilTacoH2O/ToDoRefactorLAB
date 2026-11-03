@@ -192,10 +192,6 @@ Registramos por misión quién fue **Driver** y quién **Navigator**. Intercambi
 | 10 Refactor final | Javier | Clara | Mision 10 (GREEN): esTituloValido en dominio y refactor de app.js protegido por pruebas - Driver: Javier / Navigator: Clara | Con la suite en verde se puede refactorizar en pasos pequeños sin miedo. |
 | 11 Extensión: porcentaje de avance | Clara | Javier | Mision 11 (GREEN): extension porcentaje de avance en dominio y UI - Driver: Clara / Navigator: Javier | Un buen diseño se nota cuando agregar una función toca muy poco código. |
 
-## Evidencia
-
-- Suite en verde: ![Suite en verde](evidencia-suite-verde.png)
-- Prueba que inicialmente falló (RED): ver el registro de la Misión 2 y `evidencia-red.png`.
 
 ## Historial de commits
 
